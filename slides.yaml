@@ -78,8 +78,8 @@
     notes: esp for bigger team and multi playform
 - !group
   - !slide
-    content: |
-      !profound-design-patterns.jpg!
+      content: |
+        !profound-design-patterns.jpg!
   - !slide
     content: |
       bad APIs?
@@ -146,153 +146,188 @@
       PUT
       DELETE
   - !slide
-      content: |
-        re-use all kinds of HTTP stuff
-        !profound-404.jpg!
-  - !slide
-      content: |
-        GET /stations
-  - !slide
-      content: |
-        POST /user
-  - !slide
-      content: |
-        PUT /song/123
-  - !slide
-      content: |
-        DELETE /station/471/song/123
-  - !slide
-      content: |
-        !sz-doco-station-next.png!
-  - !slide
-      content: |
-       RPC bad
-       RESTful good...?
-- !group
+    content: |
+      re-use all kinds of HTTP stuff
+      !profound-404.jpg!
   - !slide
     content: |
-      *how well does songza use a RESTful API?*
-
-      pretty well, but...
+      GET /stations
   - !slide
     content: |
-      /get-user
-      /new-user
-      /situation/create
-    notes: whats the verb?
+      POST /user
   - !slide
     content: |
-      /unfollow
-      /suggest/artist
-      /station/123/next
-    notes: whats the noun?
+      PUT /song/123
   - !slide
     content: |
-      /station/multi
-
-      (but...)
-    notes: no noun, but this is good
-  - !slide
-    content: |
-      http://songza.com/api/1/situation/targeted?
-      current_date=2013-10-02T16%3A38%3A24%2B04%3A00
-      &day=3&period=2&device=web
-      &site=songza&optimizer=user
-      &max_situations=5&max_stations=3
-  - !slide
-    content: |
-      ★ Favorites
-    notes: how do they work?
-  - !slide
-    content: |
-      /collection/user/4321/create
-      /collection/user/4321
-      /collection/123
-      /collection/123/add-station
-    notes: how things work now
-  - !slide
-    content: |
-      /user/favorites
-    notes: better?
-  - !slide
-    content: |
-      semantics
-      ------
-      representation
-- !group
-  - !slide
-      content: |
-        *how much more REST?*
-
-        maybe.
-  - !slide
-      content: |
-        !matrix-rest.jpg!
-  - !slide
-      content: |
-        "I am getting frustrated by the number of people calling any HTTP-based interface a REST API. That is RPC. It screams RPC. There is so much coupling on display that it should be given an X rating." - Roy T. Fielding
+      DELETE /station/471/song/123
   - !slide
     content: |
       !sz-doco-station-next.png!
-    notes: station-next. hardcoded inputs/outputs
-  - !slide
-    type: code:json
-    content: |
-      {
-        "title": "Hello",
-        "artist": {
-          "image_url": "http://devp.songza.com/api/1/artist/511acc78e9e23d724dede548/image",
-          "id": "511acc78e9e23d724dede548",
-          "name": "Martin Solveig"
-        },
-        "album": "Hello",
-        "cover_url": "http://images.musicnet.com/albums/049/144/337/a.jpeg",
-        "genre": "Electronica/Dance",
-        "id": 10634764,
-      }
-    notes: nested! song? or artist?
   - !slide
     content: |
-      /station/123
-      /station/123/song/456
-      /artist/789
-      ...
-      /station-with-songs-and-artists/123
-    notes: why are we nesting data in?
-  - !slide
-    content: Richardson Maturity Model
-    notes: model of RESTful maturity
-  - !slide
-    content: |
-      *Level 0: Swamp of POX*
+     RPC bad
+     RESTful good...?
+- !group
+  - !group
+    - !slide
+      content: |
+        *how REST are we?*
+    - !slide
+        content: |
+          !matrix-rest.jpg!
+    - !slide
+        content: |
+          "I am getting frustrated by the number of people calling any HTTP-based interface a REST API. That is RPC. It screams RPC. There is so much coupling on display that it should be given an X rating." - Roy T. Fielding
+    - !slide
+        content: |
+          !sz-doco-station-next.png!
+        notes: station-next. hardcoded inputs/outputs
+    - !slide
+      content: Richardson Maturity Model
+      notes: model of RESTful maturity
+  - !group
+    - !slide
+      content: |
+        *Level 0: Swamp of POX*
 
-      plain old XML + HTTP
-  - !slide
-    content: |
-      *Level 0: Swamp of POJSON*
+        plain old XML + HTTP
+    - !slide
+      content: |
+        *Level 0: Swamp of POJSON*
 
-      still looks dangerous
-  - !slide
-    content: |
-      *Level 1: Resources*
+        still looks dangerous
+    - !slide
+      content: |
+        *Level 1: Resources*
 
-      broken into multiple resources
-    notes: we are totally here
-  - !slide
-    content: |
-      *Level 2: HTTP Verbs*
+        broken into multiple resources
+      notes: we are totally here
+    - !slide
+      content: |
+        /session
+        /station/123/stats
+        /situation/id/45678/image
+  - !group
+    - !slide
+      content: |
+        *Level 2: HTTP Verbs*
 
-      standard set of verbs
-    notes: we are close
+        standard set of verbs
+      notes: we use POST at least
+  - !group
+    - !slide
+      content: |
+        *Also: Nouns*
+      notes: nouns related to sticking with liimited verbs
+    - !slide
+      content: |
+        /get-user
+        /new-user
+        /situation/create
+      notes: whats the verb?
+    - !slide
+      content: |
+        /unfollow
+        /suggest/artist
+        /station/123/next
+      notes: whats the noun?
+    - !slide
+      content: |
+        /station/multi
+
+        (but...)
+      notes: no noun, but this is good
+    - !slide
+      content: |
+        http://songza.com/api/1/situation/targeted?
+        current_date=2013-10-02T16%3A38%3A24%2B04%3A00
+        &day=3&period=2&device=web
+        &site=songza&optimizer=user
+        &max_situations=5&max_stations=3
+    - !slide
+      content: |
+        ★ Favorites
+      notes: how do they work?
+    - !slide
+      content: |
+        /collection/user/4321/create
+        /collection/user/4321
+        /collection/123
+        /collection/123/add-station
+      notes: how things work now
+    - !slide
+      content: |
+        /user/favorites
+      notes: better? semantics/representation
+  - !group
+    - !slide
+      content: |
+        *Level 3 - Hypermedia Controls*
+
+        discoverability
+    - !slide
+      type: code:json
+      content: |
+        {
+          "title": "Hello",
+          "artist": {
+            "image_url": "http://devp.songza.com/api/1/artist/511acc78e9e23d724dede548/image",
+            "id": "511acc78e9e23d724dede548",
+            "name": "Martin Solveig"
+          },
+          "album": "Hello",
+          "cover_url": "http://images.musicnet.com/albums/049/144/337/a.jpeg",
+          "genre": "Electronica/Dance",
+          "id": 10634764,
+        }
+      notes: nested! artist/album
+    - !slide
+      type: code:json
+      content: |
+        {
+          "title": "Hello",
+          "links": {
+            "artist": "http://devp.songza.com/api/1/artist/511acc78e9e23d724dede548",
+            "album": "http://devp.songza.com/api/1/album/12345"
+          }
+          "cover_url": "http://images.musicnet.com/albums/049/144/337/a.jpeg",
+          "genre": "Electronica/Dance",
+          "id": 10634764,
+        }
+      notes: discover resources no doco
+    - !slide
+      content: |
+        links -> resources
+    - !slide
+        content: |
+          !ncsa-mosaic.png!
+        notes: web does this with href, link, css
 - !group
   - !slide
     content: |
       *compromises.*
   - !slide
     content: |
-      !situation-targeted-station-ids.png!
+      nobody does all this
+    notes: complicated verbs need doco
   - !slide
     content: |
+      !situation-targeted-station-ids.png!
+    notes: we have nested station ids
+  - !slide
+    content: |
+      /station/123
+      /station/456
+      /station/789
+      ...
       /station/multi
-
-      (yes!)
+    notes: better to avoid calls. maybe nesting?
+  - !slide
+    content: |
+      *ql.io*
+      !ql-io-sample.png!
+    notes: funky solution for aggregating calls
+  - !slide
+    content: |
+      "Our REST API, while very capable of handling the requests from our devices in a generic way, is optimized for none of them. Our goal is to take advantage of the differences of these devices rather than treating them generically." Daniel Jacobson, Director of Engineering for the Netflix API
