@@ -331,3 +331,15 @@
   - !slide
     content: |
       "Our REST API, while very capable of handling the requests from our devices in a generic way, is optimized for none of them. Our goal is to take advantage of the differences of these devices rather than treating them generically." Daniel Jacobson, Director of Engineering for the Netflix API
+- !group
+  - !slide
+    content: |
+      https://github.com/devp/sz-rest-talk-2013
+      http://martinfowler.com/articles/richardsonMaturityModel.html
+      http://en.wikipedia.org/wiki/Representational_state_transfer
+      http://en.wikipedia.org/wiki/Remote_procedure_call#Web
+      http://en.wikipedia.org/wiki/HATEOAS
+      https://blog.apigee.com/detail/api_design_ruminating_over_rest#1-2-3
+      http://timelessrepo.com/haters-gonna-hateoas
+      http://blog.programmableweb.com/2012/05/15/why-rest-keeps-me-up-at-night/
+      http://theprofoundprogrammer.com/
