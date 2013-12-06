@@ -1,0 +1,176 @@
+---
+- !group
+  - !slide
+    content: |
+      *RESTful API Design*
+
+      Theory, Reality, and Songzality
+  - !slide
+    content: what to expect
+    notes: not quite definitions; exploring common practices and ideas
+- !group
+  - !slide
+    content: |
+      *The Basics*
+  - !slide
+    content: API
+    notes: how your software talks to each other
+  - !slide
+    content: |
+      *songza.com/what-should-i-listen-to-while-working-out*
+
+      ...
+    notes: maybe you go to this URL and you get an answer
+  - !slide
+    content: |
+      *songza.com/what-should-i-listen-to-while-working-out*
+
+      _"listen to nothing but electro"_
+    notes: talk about format
+  - !slide
+    content: |
+      XML is like
+      !some-xml.png!
+  - !slide
+    type: code:json
+    content: |
+      {
+        "title": "Hello",
+        "artist": {
+          "image_url": "http://devp.songza.com/api/1/artist/511acc78e9e23d724dede548/image",
+          "id": "511acc78e9e23d724dede548",
+          "name": "Martin Solveig"
+        },
+        "album": "Hello",
+        "cover_url": "http://images.musicnet.com/albums/049/144/337/a.jpeg",
+        "genre": "Electronica/Dance",
+        "id": 10634764,
+      }
+    notes: JSON = labels + info. Guess what this is?
+  - !slide
+    content: |
+      how does songza use an API?
+
+      *VERY*
+  - !slide
+    content: |
+      Can I log in?
+      What is the next song on this playlist?
+      *What is the perfect playlist for what I'm doing right now?*
+  - !slide
+    content: |
+      http://songza.com/api/1/situation/targeted?
+      current_date=2013-10-02T16%3A38%3A24%2B04%3A00
+      &day=3&period=2&device=web
+      &site=songza&optimizer=user
+      &max_situations=5&max_stations=3 
+    notes: this URL makes us our money
+  - !slide
+    content: |
+      !situation-targeted-much-json.png!
+  - !slide
+    content: |
+      http://songza.com/listen/mariah-s-merry-christmas-MariahCarey/
+      !http://songza.com/api/1/station/1750308/image?size=400!
+    notes: this is an API too
+  - !slide
+    content: better APIs?
+    notes: esp for bigger team and multi playform
+- !group
+  - !slide
+    content: |
+      !profound-design-patterns.jpg!
+  - !slide
+    content: |
+      bad APIs?
+  - !slide
+    content: |
+      http://songza.com/q?action=getSong
+      &step=4&stationId=4321
+      &previous_song_obj_id=f2fa3
+  - !slide
+    content: |
+      http://songza.com/listenAction?
+      do=skip&current=7878&station_url=/mariah/
+    notes: inconsistency is bad
+  - !slide
+    content: |
+      *RPC*
+
+      remote procedure call
+    notes: specific inputs and outputs
+  - !slide
+    content: |
+      SOAP is like
+      !some-xml.png!
+  - !slide
+    content: |
+      *REST*
+
+      representational stateful transfer?
+    notes: most APIs are actually...
+  - !slide
+    content: |
+      *RESTful*
+
+      Ruthlessly Efficient Software Through
+      Flawless Url Labels
+  - !slide
+    content: |
+      whatever *nouns*
+
+      session
+      station
+      song
+  - !slide
+    content: |
+      consistent *URLs*
+
+      /user
+      /stations
+      /song/12345
+  - !slide
+    content: |
+      use standard *verbs*
+
+      READ
+      CREATE
+      UPDATE
+      DELETE
+  - !slide
+    content: |
+      *re-*use standard *HTTP* verbs
+
+      GET
+      POST
+      PUT
+      DESTROY
+  - !slide
+      content: |
+        re-use all kinds of HTTP stuff
+        !profound-404.jpg!
+  - !slide
+      content: |
+        GET /stations
+  - !slide
+      content: |
+        POST /user
+  - !slide
+      content: |
+        PUT /song/12345
+  - !slide
+      content: |
+        !sz-doco-station-next.png!
+  - !slide
+      content: |
+        !matrix-rest.jpg!
+  - !slide
+      content: |
+       RPC bad
+       REST good...?
+  - !slide
+      content: |
+        "I am getting frustrated by the number of people calling any HTTP-based interface a REST API. That is RPC. It screams RPC. There is so much coupling on display that it should be given an X rating." - Roy T. Fielding
+  - !slide
+      content: |
+        !sz-doco-station-next.png!
